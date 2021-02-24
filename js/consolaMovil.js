@@ -1,7 +1,7 @@
 var idServicio = 0;
 var movil = 0;
 var chofer = '';
-var locaciones = {1:'Base',2:'Toay', 3:'Santa Rosa'};
+var locaciones = {1:'Base',2:'Zona 1', 3:'Zona 2'};
 var proximoDestino = "";
 var idViajeDestino = 0;
 $(function () {
@@ -32,7 +32,7 @@ $(function () {
             noHayServicio();
         }
     });
-    $("#libre_toay").on("click", async function(){
+    $("#libre_zona1").on("click", async function(){
         $(this).prepend('<i class="fas fa-spinner fa-pulse fa-lg carga"></i>');
         $(".btn").removeClass("active");
         $(this).addClass("active");
@@ -42,7 +42,7 @@ $(function () {
             noHayServicio();
         }
     });
-    $("#libre_sRosa").on("click", async function(){
+    $("#libre_zona2").on("click", async function(){
         $(this).prepend('<i class="fas fa-spinner fa-pulse fa-lg carga"></i>');
         $(".btn").removeClass("active");
         $(this).addClass("active");
@@ -265,8 +265,8 @@ function noHayServicio(){
     $('#tomo_viaje i').addClass('text-white');
     $("#actualizarDestino").prop("disabled", true);
     $("#libre_base").prop("disabled", true);
-    $("#libre_toay").prop("disabled", true);
-    $("#libre_sRosa").prop("disabled", true);
+    $("#libre_zona1").prop("disabled", true);
+    $("#libre_zona2").prop("disabled", true);
     $("#fuera_servicio").prop("disabled", true);
     $("#resumen_turno").prop("disabled", true);
     $("#errorServicio").removeClass("d-none");

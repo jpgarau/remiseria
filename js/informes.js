@@ -73,11 +73,11 @@ function generarInformePDF(servicios, vehiculo){
 	informe.text(160, 5, "Fecha: "+fecha.fecha2);
 	
 	informe.setFontSize(18);
-	informe.text(80, 10, "REMISERIA NOVA");
+	informe.text(105, 10, empresa, "center");
 
 	informe.setFontSize(14);
 	informe.setFontType('bold');
-	informe.text(75, 20, "INFORME DE VIAJES REALIZADOS");
+	informe.text(105, 20, "INFORME DE VIAJES REALIZADOS", "center");
 
 	informe.setFontSize(10);
 	informe.text(20,30, "Movil: "+vehiculo);

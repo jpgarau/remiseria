@@ -8,7 +8,7 @@ class Conexion{
 		$pass = '';
 		$bbdd = 'remiseria';
 		$mysqli = new mysqli($host,$user,$pass,$bbdd);
+		$mysqli->set_charset('utf8');
 		return $mysqli;
 	}
 }
-?>

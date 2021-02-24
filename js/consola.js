@@ -1,23 +1,12 @@
 var timerAlarma = 15;
 $(function () {
+	setearAlarma();
+
 	$("#downNav").on("click", openNav);
 	$("#calendario").datepicker({
 		autoSize: true,
 		dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
-		monthNames: [
-			"Enero",
-			"Febrero",
-			"Marzo",
-			"Abril",
-			"Mayo",
-			"Junio",
-			"Julio",
-			"Agosto",
-			"Setiembre",
-			"Octubre",
-			"Noviembre",
-			"Diciembre",
-		],
+		monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"],
 		onSelect: function (dateText, inst) {
 			listarReservas(getFechaHora($(this).datepicker("getDate")).fecha);
 		},
@@ -312,7 +301,7 @@ $(function () {
 		ObtenerViajes(idServicio);
 		closeNav();
 	});
-	$("#tabla_toay tbody").on("dblclick", "tr", function () {
+	$("#tabla_zona1 tbody").on("dblclick", "tr", function () {
 		let idServicio = $(this.childNodes[2].childNodes[0]).val();
 		$("#menu-servicios li a").removeClass("active");
 		$("#menu-servicios li a#" + idServicio).addClass("active");
@@ -320,7 +309,7 @@ $(function () {
 		closeNav();
 	});
 
-	$("#tabla_sRosa tbody").on("dblclick", "tr", function () {
+	$("#tabla_zona2 tbody").on("dblclick", "tr", function () {
 		let idServicio = $(this.childNodes[2].childNodes[0]).val();
 		$("#menu-servicios li a").removeClass("active");
 		$("#menu-servicios li a#" + idServicio).addClass("active");
@@ -1030,8 +1019,8 @@ function validarHora(fecha, hora) {
 
 function openNav() {
 	$("#tabla_base tbody").html("");
-	$("#tabla_toay tbody").html("");
-	$("#tabla_sRosa tbody").html("");
+	$("#tabla_zona1 tbody").html("");
+	$("#tabla_zona2 tbody").html("");
 	$.ajax({
 		type: "POST",
 		url: "scripts/apipila.php",
@@ -1041,8 +1030,8 @@ function openNav() {
 			if (response.exito) {
 				if (response.encontrados > 0) {
 					let ordenBase = 1,
-						ordenToay = 1,
-						ordenSRosa = 1;
+						ordenZona1 = 1,
+						ordenZona2 = 1;
 					response[0].forEach((servicio) => {
 						if (servicio.pila === 1) {
 							$("#tabla_base tbody").append(
@@ -1065,10 +1054,10 @@ function openNav() {
 							);
 							ordenBase++;
 						} else if (servicio.pila === 2) {
-							$("#tabla_toay tbody").append(
+							$("#tabla_zona1 tbody").append(
 								"<tr>" +
 									"<td>" +
-									ordenToay +
+									ordenZona1 +
 									"</td>" +
 									"<td>" +
 									servicio.idVehiculo +
@@ -1083,12 +1072,12 @@ function openNav() {
 									"</td>" +
 									"</tr>"
 							);
-							ordenToay++;
+							ordenZona1++;
 						} else if (servicio.pila === 3) {
-							$("#tabla_sRosa tbody").append(
+							$("#tabla_zona2 tbody").append(
 								"<tr>" +
 									"<td>" +
-									ordenSRosa +
+									ordenZona2 +
 									"</td>" +
 									"<td>" +
 									servicio.idVehiculo +
@@ -1103,7 +1092,7 @@ function openNav() {
 									"</td>" +
 									"</tr>"
 							);
-							ordenSRosa++;
+							ordenZona2++;
 						}
 					});
 					document.getElementById("mySidenav").style.height = "250px";
@@ -1124,4 +1113,18 @@ function openNav() {
 function closeNav() {
 	document.getElementById("mySidenav").style.height = "0";
 	document.body.style.backgroundColor = "white";
+}
+
+function setearAlarma(){
+	$.ajax({
+		type:'POST',
+		url: 'scripts/apiparametros.php',
+		data: {param:'alarma'},
+		dataType: 'json',
+		success: function(response){
+			if(response.exito){
+				timerAlarma = response.alarma;
+			}
+		}
+	});
 }

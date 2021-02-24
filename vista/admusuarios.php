@@ -65,7 +65,7 @@
 <div class="container">
     <div class="table-responsive">
 
-        <table id="tabla_usuarios" class="table table-hover mx-2">
+        <table id="tabla_usuarios" class="table table-hover table-sm mx-2">
             <thead>
                 <tr>
                     <th>Apellido</th>

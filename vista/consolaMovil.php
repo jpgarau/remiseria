@@ -1,5 +1,6 @@
 <?php
-include('../modelo/validar.php');
+$dir = is_dir('modelo')?'':'../';
+include_once $dir . 'modelo/validar.php';
 if(isset($_SESSION['usuario'])){
 ?>
 <div  class="container" id="pantallaMovil">
@@ -23,10 +24,10 @@ if(isset($_SESSION['usuario'])){
             <button class="btn btn-success btn-block py-3 font-weight-bolder" id="libre_base"><i class="fas fa-place-of-worship"></i> BASE</button>
         </div>
         <div class="col mt-2">
-            <button class="btn btn-success btn-block py-3 font-weight-bolder" id="libre_toay"><i class="fas fa-landmark"></i> TOAY</button>
+            <button class="btn btn-success btn-block py-3 font-weight-bolder" id="libre_zona1"><i class="fas fa-map-marker-alt"></i> Zona 1</button>
         </div>
         <div class="col mt-2">
-            <button class="btn btn-success btn-block py-3 font-weight-bolder" id="libre_sRosa"><i class="fas fa-city"></i> SANTA ROSA</button>
+            <button class="btn btn-success btn-block py-3 font-weight-bolder" id="libre_zona2"><i class="fas fa-map-marker-alt"></i> Zona 2</button>
         </div>
         <div class="col mt-2">
             <button class="btn btn-warning btn-block py-3 font-weight-bolder" id="fuera_servicio"><i class="fas fa-comment-slash"></i> FUERA DE SERVICIO</button>

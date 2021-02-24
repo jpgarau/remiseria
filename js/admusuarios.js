@@ -122,8 +122,8 @@ function cargarFila(objeto){
         '<td>'+objeto.descripcion+'<input type="hidden" value="pid'+objeto.perfilid+'">'+'</td>'+
         '<td class="text-center">'+(objeto.idChofer==null?" ":objeto.idChofer)+'<input type="hidden" value="'+(objeto.idChofer==null?0:objeto.idChofer)+'">'+'</td>'+
         '<td class="text-center">'+(objeto.idPropietario==null?" ":objeto.idPropietario)+'<input type="hidden" value="'+(objeto.idPropietario==null?0:objeto.idPropietario)+'">'+'</td>'+
-        '<td>'+'<button class="btn btn-dark btn_editar" title="Modificar Usuario" data-toggle="modal"><i class="fas fa-edit"></i></button>'+'</td>'+
-        '<td>'+'<button class="btn btn-danger btn_borrar" title="Eliminar Usuario"><i class="fas fa-trash-alt"></i></button>'+'</td>'+
+        '<td>'+'<button class="btn btn-sm btn-dark btn_editar" title="Modificar Usuario" data-toggle="modal"><i class="fas fa-edit"></i></button>'+'</td>'+
+        '<td>'+'<button class="btn btn-sm btn-danger btn_borrar" title="Eliminar Usuario"><i class="fas fa-trash-alt"></i></button>'+'</td>'+
         '<input type="hidden" value="uid'+objeto.usuarioid+'">'+
         '</tr>');
 }

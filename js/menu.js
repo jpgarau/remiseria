@@ -15,6 +15,20 @@ $(document).ready(function () {
 		$(this).addClass("active");
 		$("#contenedor2").load("vista/seguridad.php");
 	});
+	
+	$("#config").on('click', function(e){
+		e.preventDefault();
+		document.body.style.backgroundColor = "white"
+		if (typeof relojConsola !== "undefined") {
+			clearInterval(relojConsola);
+		}
+		$("#contenedor").removeClass("menu-principal");
+		$("#navbarGestion a").removeClass("active");
+		$("#navbarGestion button").removeClass("active");
+		$(this).addClass("active");
+		$("#contenedor2").load("vista/controlPanel.php");
+	});
+	
 	$("#cambioPass").click(function (e) {
 		e.preventDefault();
 		document.body.style.backgroundColor = "white"
@@ -31,22 +45,27 @@ $(document).ready(function () {
 		e.preventDefault();
 		document.body.style.backgroundColor = "white"
 		$("#contenedor").removeClass("menu-principal");
-		$("#navbarGestion a").removeClass("active");
-		$("#navbarGestion button").removeClass("active");
-		$(this).addClass("active");
-		$("#contenedor2").load("vista/" + e.target.id + ".php"),
-			(res, status, xhr) => {
-				if (status === "error") {
-					function redirigir() {
-						window.location.replace("http://localhost/remiseria");
+		if(!(e.target.id==='consola' && window.innerWidth<1100))
+		{
+			$("#navbarGestion a").removeClass("active");
+			$("#navbarGestion button").removeClass("active");
+			$(this).addClass("active");
+			$("#contenedor2").load("vista/" + e.target.id + ".php"),
+				(res, status, xhr) => {
+					if (status === "error") {
+						function redirigir() {
+							window.location.replace("http://localhost/remiseria");
+						}
+						$("#contenedor2").html(
+							"<div class='container'><div class='alert alert-danger m-4'><strong>Error</strong> en las credenciales. Redirigiendo...<div class='spinner-border spinner-border-sm float-right' role='status' aria-hidden='true'></div></div></div>"
+						);
+						setTimeout(redirigir, 3000);
+						res, status, xhr;
 					}
-					$("#contenedor2").html(
-						"<div class='container'><div class='alert alert-danger m-4'><strong>Error</strong> en las credenciales. Redirigiendo...<div class='spinner-border spinner-border-sm float-right' role='status' aria-hidden='true'></div></div></div>"
-					);
-					setTimeout(redirigir, 3000);
-					res, status, xhr;
-				}
-			};
+				};
+		}else{
+			alertify.error('<b>Imposible Abrir</b><br>Resolución de pantalla insuficiente');
+		}
 	});
 });
 

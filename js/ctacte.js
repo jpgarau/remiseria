@@ -279,7 +279,7 @@ function imprimirRecibo(fecha, hora, cliente, importe, observa){
 	recibo.text(5,10,"Hora: "+hora);
 
 	recibo.setFontSize(18);
-	recibo.text(105, 10, "REMISERIA NOVA", "center");
+	recibo.text(105, 10, empresa, "center");
 
 	recibo.setFontSize(14);
 	recibo.setFontType('bold');
@@ -356,7 +356,7 @@ function imprimirResumen(movimientos, saldo){
 	resumen.text(5,5,"Fecha: " + fecha.fecha.replace(/([0-9]{4})-([0-9]{2})-([0-9]{2})/,"$3-$2-$1"));
 	
 	resumen.setFontSize(18);
-	resumen.text(105, 10, "REMISERIA NOVA", "center");
+	resumen.text(105, 10, empresa, "center");
 
 	resumen.setFontSize(12);
 	resumen.setFontType('bold');

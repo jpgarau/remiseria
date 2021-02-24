@@ -1,5 +1,6 @@
 <?php
-include('../modelo/validar.php');
+$dir = is_dir('modelo')?'':'../';
+include_once $dir . 'modelo/validar.php';
 if(isset($_SESSION['usuario'])){
 ?>
 <div class="d-flex justify-content-center"> 

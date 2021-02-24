@@ -1,5 +1,6 @@
 <?php
-include('../modelo/validar.php');
+$dir = is_dir('modelo')?'':'../';
+include_once $dir.'modelo/validar.php';
 if(isset($_SESSION['usuario'])){
 ?>
 <div class="sidenav" id="mySidenav">
@@ -16,20 +17,20 @@ if(isset($_SESSION['usuario'])){
             </table>
         </div>
         <div class="col text-center">
-        <table id="tabla_toay" class="table table-light table-hover table-sm">
+        <table id="tabla_zona1" class="table table-light table-hover table-sm">
                 <thead>
                     <tr>
-                        <th colspan="3">TOAY</th>
+                        <th colspan="3">Zona 1</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
             </table>
         </div>
         <div class="col text-center">
-        <table id="tabla_sRosa" class="table table-light table-hover table-sm">
+        <table id="tabla_zona2" class="table table-light table-hover table-sm">
                 <thead>
                     <tr>
-                        <th colspan="3">SANTA ROSA</th>
+                        <th colspan="3">Zona 2</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

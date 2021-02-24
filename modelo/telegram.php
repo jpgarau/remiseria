@@ -2,13 +2,13 @@
 
 include_once 'validar.php';
 include_once 'conexion.php';
-
+require_once '../settings.php';
 class Telegram{
     private $telid;
     private $last_name;
     private $firts_name;
-    private $idOperadora = 0 ;
-    private $token = '';
+    private $idOperadora = OPERADORA;
+    private $token = TOKEN;
     private $website = 'https://api.telegram.org/bot';
 
     public function __construct()
@@ -81,6 +81,8 @@ class Telegram{
             } catch (Exception $e) {
                 $arr['msg'] = $e->getMessage();
             }
+        }else{
+            $arr = array('exito'=>true, 'msg'=>'');
         }
         return $arr;
     }
@@ -107,7 +109,6 @@ class Telegram{
             try {
                 $sql = 'SELECT * FROM telegram';
                 $mysqli = Conexion::abrir();
-                $mysqli->set_charset('utf8');
                 $stmt = $mysqli->prepare($sql);
                 if($stmt!==FALSE){
                     $stmt->execute();
@@ -118,10 +119,11 @@ class Telegram{
                     $mysqli->close();
                     $arr = array('exito'=>true, 'msg'=>'','encontrados'=>$encontrados, $arrTel);
                 }
-                
             } catch (Exception $e) {
                 $arr['msg'] = $e->getMessage();
             }
+        }else{
+            $arr = array('exito'=>true, 'msg'=>'', 'encontrados'=>0);
         }
         return $arr;
     }

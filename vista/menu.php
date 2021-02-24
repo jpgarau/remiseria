@@ -7,7 +7,7 @@ $perfilp->setPerfilId($_SESSION['userProfile']['perfilid']);
 $retorno = $perfilp->listarProgramas();
 ?>
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand text-warning text-uppercase" href="/remiseria" style="font-family: 'Russo One', sans-serif;">Gestion Remises</a>
+    <a class="navbar-brand text-warning text-uppercase" href="/remiseria" style="font-family: 'Russo One', sans-serif;"><img src="img/favicon-32x32.png" alt="GESTION REMISES"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarGestion" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

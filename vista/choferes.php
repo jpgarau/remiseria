@@ -1,5 +1,6 @@
 <?php
-include('../modelo/validar.php');
+$dir = is_dir('modelo')?'':'../';
+include_once $dir . 'modelo/validar.php';
 if(isset($_SESSION['usuario'])){
 ?>
 
@@ -24,8 +25,7 @@ if(isset($_SESSION['usuario'])){
             <div class="modal-body">
 
                 <?php
-                    $dir = is_dir('vista') ? '' : '../';
-                    include_once($dir.'vista/formPersona.php'); 
+                    include_once $dir.'vista/formPersona.php'; 
                 ?>
                 <div class="input-group float-left mb-2 col-sm-6 col-md-4 col-lg-3">
                     <div class="input-group-prepend">

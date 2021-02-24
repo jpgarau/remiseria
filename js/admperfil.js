@@ -139,9 +139,9 @@ function confirmarBorrado(botonBorrar){
 function cargarFila(objeto){
     $('#tabla_perfil').append("<tr>"+
                 "<td>"+objeto.descripcion+"</td>"+
-                "<td>"+"<button class='btn btn-dark btn_editar' title='Modificar Perfil' data-toggle='modal'><i class='fas fa-edit'></i></button>"+"</td>"+
-                "<td>"+"<button class='btn btn-danger btn_borrar'><i class='fas fa-trash-alt'></i></button>"+"</td>"+
-                "<td>"+"<button class='btn btn-info btn_perpro'><i class='fas fa-bars'></i></button>"+"</td>"+
+                "<td>"+"<button class='btn btn-sm btn-dark btn_editar' title='Modificar Perfil' data-toggle='modal'><i class='fas fa-edit'></i></button>"+"</td>"+
+                "<td>"+"<button class='btn btn-sm btn-danger btn_borrar'><i class='fas fa-trash-alt'></i></button>"+"</td>"+
+                "<td>"+"<button class='btn btn-sm btn-info btn_perpro'><i class='fas fa-bars'></i></button>"+"</td>"+
                 "<input type='hidden' value='"+objeto.perfilid+"'>"+
                 "</tr>");
 }

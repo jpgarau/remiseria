@@ -44,7 +44,7 @@ $(document).ready(function () {
 		}
 
 	});
-	
+
 	$("#cuit").on("input", function(){
 		validaCuit($(this).val());
 	});
@@ -230,10 +230,10 @@ function cargarFila(objeto) {
 			objeto.email +
 			"</td>" +
 			"<td>" +
-			"<button class='btn btn-dark btn_editar' title='Modificar' data-toggle='modal'><i class='fas fa-edit'></i></button>" +
+			"<button class='btn btn-sm btn-dark btn_editar' title='Modificar' data-toggle='modal'><i class='fas fa-edit'></i></button>" +
 			"</td>" +
 			"<td>" +
-			"<button class='btn btn-danger btn_borrar' title='Eliminar'><i class='fas fa-trash-alt'></i></button>" +
+			"<button class='btn btn-sm btn-danger btn_borrar' title='Eliminar'><i class='fas fa-trash-alt'></i></button>" +
 			"</td>" +
 			"<input type='hidden' value='" +
 			objeto.idPropietario +

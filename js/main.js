@@ -1,5 +1,7 @@
+var empresa = 'Remiseria';
 
 $(function(){
+	setearEmpresa();
 	if($('#idlocalidad').length>0){cargarLocalidad()}
     if($('#cmbDoc').length>0){cargarTipodoc()}
 	if($('#cmbIva').length>0){cargarCondiva()}
@@ -8,8 +10,8 @@ $(function(){
 		$("#actTelegram").on('click', function (){
 			let telid = $("#cmbTelegram").val();
 			$("#actTelegram i").addClass("fa-spin");
-			actualizarTablaTelegram().then(()=>{ 
-				cargarTelegram().then(()=>{
+			actualizarTablaTelegram().then((exito)=>{
+				cargarTelegram().then((exito)=>{
 					$("#actTelegram i").removeClass("fa-spin");
 					$("#cmbTelegram").val(telid);
 				});
@@ -21,48 +23,79 @@ $(function(){
 });
 
 // Localidades
-function cargarLocalidad(){
-	var request = new Request('ajax/localidades.php');
-	fetch(request).then((response) => response.json()).then((localidades) => {
-		var selectLocalidad = document.getElementById('idlocalidad');
-		selectLocalidad.html = "";
-		localidades.forEach(localidad => {
-		  var opLocalidad = document.createElement("option");
-		  opLocalidad.value = localidad.idlocalidad;
-		  opLocalidad.text = localidad.localidad;
-		  selectLocalidad.appendChild(opLocalidad);
-		});
-	  });
-  }
+function cargarLocalidad() {
+	$.ajax({
+		type: 'POST',
+		url: 'scripts/apiLocalidades.php',
+		datatype: 'json',
+		data: ({param:1}),
+		success: function(response){
+			if(response.exito){
+				$("#idlocalidad").html("");
+				if(response.encontrados>0){
+					response[0].forEach(localidad => {
+						$("#idlocalidad").append("<option value='" + localidad.idlocalidad + "'>" + localidad.localidad + "</option>");
+					});
+				}
+
+			}else{
+				console.error(response.msg);
+			}
+		},
+		error: function(response){
+			console.error(response);
+		}
+	});
+}
 
 //Tipos Documentos
-function cargarTipodoc(){
-	var request = new Request('ajax/tiposDoc.php');
-	fetch(request).then((response) => response.json()).then((tiposDoc) => {
-		var tipoDoc = document.getElementById('cmbDoc');
-		tipoDoc.html = "";
-		tiposDoc.forEach(tDoc => {
-		  var opTipoDoc = document.createElement("option");
-		  opTipoDoc.value = tDoc.idTipoDoc;
-		  opTipoDoc.text = tDoc.descripcion;
-		  tipoDoc.appendChild(opTipoDoc);
-		});
-	  });
+function cargarTipodoc() {
+	$.ajax({
+		type: 'POST',
+		url: 'scripts/apiTipoDoc.php',
+		data: ({ param: 1 }),
+		datatype: 'json',
+		success: function (response) {
+			if (response.exito) {
+				$("#cmbDoc").html("");
+				if (response.encontrados > 0) {
+					response[0].forEach(tipoDoc => {
+						$("#cmbDoc").append("<option value='" + tipoDoc.idTipoDoc + "'>" + tipoDoc.descripcion + "</option>");
+					});
+				}
+			} else {
+				console.error(response.msg);
+			}
+		},
+		error: function (response) {
+			console.error(response);
+		}
+	});
 }
 
 // Condiciones de Iva
-function cargarCondiva(){
-	var request = new Request('ajax/condIvas.php');
-	fetch(request).then((response) => response.json()).then((condIvas) => {
-		var selectCmbIva = document.getElementById('cmbIva');
-		selectCmbIva.html = "";
-		condIvas.forEach(condIva => {
-		  var opCondIva = document.createElement("option");
-		  opCondIva.value = condIva.idcondiva;
-		  opCondIva.text = condIva.desccondiva;
-		  selectCmbIva.appendChild(opCondIva);
-		});
-	  });
+function cargarCondiva() {
+	$.ajax({
+		type: 'POST',
+		url: 'scripts/apiCondIva.php',
+		datatype: 'json',
+		data: ({param:1}),
+		success: function(response){
+			if(response.exito){
+				$("#cmbIva").html("");
+				if(response.encontrados>0){
+					response[0].forEach(condIva => {
+						$("#cmbIva").append("<option value='" + condIva.idcondiva + "'>" + condIva.desccondiva + "</option>");
+					});
+				}
+			}else{
+				console.error(response.msg);
+			}
+		},
+		error: function(response){
+			console.error(response);
+		}
+	});
 }
 
 function cargarTelegram(){
@@ -78,16 +111,21 @@ function cargarTelegram(){
     let request = new Request('scripts/apitelegram.php',{ method:'POST', body: datos});
     fetch(request).then((response)=>response.json()).then((respuesta)=>{
       if(respuesta.exito){
-        let arrTelegrams = respuesta[0];
-        if(arrTelegrams.length > 0){
-          	arrTelegrams.forEach(telegram => {
-				let opTelegram = document.createElement("option");
-				opTelegram.value = telegram.telid;
-				opTelegram.text = telegram.last_name + ", "+ telegram.first_name;
-				cmbTelegram.appendChild(opTelegram);
-		  	});
+        if(respuesta.encontrados > 0)
+		{
+			let arrTelegrams = respuesta[0];
+			if(arrTelegrams.length > 0){
+				arrTelegrams.forEach(telegram => {
+					let opTelegram = document.createElement("option");
+					opTelegram.value = telegram.telid;
+					opTelegram.text = telegram.last_name + ", "+ telegram.first_name;
+					cmbTelegram.appendChild(opTelegram);
+				});
+				exito(respuesta.exito);
+			}
+		}else{
 			exito(respuesta.exito);
-        }
+		}
       }else{
 		console.error(respuesta.msg);
 		exito(respuesta.exito);
@@ -144,11 +182,11 @@ function generarInformePDF(servicios, movil, chofer, fecha) {
 	informe.text(160, 5, "Fecha: " + fecha.fecha2);
 
 	informe.setFontSize(18);
-	informe.text(80, 10, "REMISERIA NOVA");
+	informe.text(105, 10, empresa, "center");
 
 	informe.setFontSize(14);
 	informe.setFontType("bold");
-	informe.text(75, 20, "INFORME DE TURNO");
+	informe.text(105, 20, "INFORME DE VIAJES REALIZADOS", "center");
 
 	informe.setFontSize(10);
 	informe.text(20, 30, "Movil: " + movil);
@@ -207,4 +245,18 @@ function generarInformePDF(servicios, movil, chofer, fecha) {
 	informe.text(142, linea, "Totales: " + viajes.toString() + " (viaje/s)");
 	informe.text(199, linea, "$ " + total.toFixed(2).toString(), "right");
 	informe.save(fecha.fecha + " -" + " turno movil " + movil + ".pdf");
+}
+
+function setearEmpresa(){
+	$.ajax({
+		type:'POST',
+		url: 'scripts/apiparametros.php',
+		data: {param:'empresa'},
+		dataType: 'json',
+		success: function(response){
+			if(response.exito){
+				empresa = response.empresa;
+			}
+		}
+	});
 }

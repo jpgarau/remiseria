@@ -1,9 +1,10 @@
 <?php
-include('../modelo/validar.php');
+$dir = is_dir('modelo')?'':'../';
+include_once $dir.'modelo/validar.php';
 if(isset($_SESSION['usuario'])){
 ?>
 <div class="container">
-    <h1 class="text-center">Informes</h1>
+    <h3 class="text-center"><i>Informes</i></h3>
     <div class="">
         <button class="btn btn-info" id="informeViaje">Informe de Viajes Realizados</button>
     </div>

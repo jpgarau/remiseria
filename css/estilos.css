@@ -11,14 +11,14 @@ body, html{
 }
 
 .site-login {
-    background: url(../img/fondo1.jpg);
+    background: url(../img/fondo10.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
 }
 @media only screen and (max-width:767px){
     .site-login{
-        background: url(../img/fondo3.jpg);
+        background: url(../img/fondo9.jpg);
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -30,20 +30,30 @@ a.btn-menu{
     font-weight: bold;
     text-transform: uppercase;
 }
-
 a.btn-menu:hover{
     color: gold;
 }
 .form-login {
-    background-color: rgba(255, 255,255, .6);
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
     width: 300px;
     margin: auto;
     padding: 1em;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, .8);
+}
+#login input{
+    margin: 0 auto;
+    width: 75%;
+    transition: all ease-in-out 0.5s;
+}
+#login input:focus, #login input:hover{
+    width: 100%;
+    transition: all ease-in-out 0.5s;
 }
 
 #pantallaMovil {
     height: 100%;
-    background: url(../img/fondoMapaToay.jpg);
+    background: url(../img/fondo9.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -56,7 +66,7 @@ a.btn-menu:hover{
 
 @media only screen and (min-width:768px){
     #pantallaMovil{
-    background: url(../img/fondoMapaToay2.jpg);
+    background: url(../img/fondo10.jpg);
     }
     #pantallaMovil button{
         font-size: 1rem;
@@ -64,13 +74,18 @@ a.btn-menu:hover{
 }
 
 .menu-principal{
-    background-image: url('../img/fondo8.jpg'); 
+    background-color: rgba(0, 0, 0, .8);
+    background-image: url('../img/fondo6.jpg'); 
     height:100vh;
     background-position: center;
     background-repeat: no-repeat; 
     background-size: cover;
 }
-
+nav.navbar{
+    /* padding-top: 0.2rem;
+    padding-bottom: 0.2rem; */
+    height: 49px;
+}
 .navbar-dark .navbar-nav .nav-link.active{
     color: #ffc107;
 }

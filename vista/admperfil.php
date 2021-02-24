@@ -48,7 +48,7 @@
 </div>
 
 <input type="text" name="buscador" id="buscador" class="buscador" placeholder="Buscar">
-<table id="tabla_perfil" class="table table-hover">
+<table id="tabla_perfil" class="table table-hover table-sm">
 	<thead>
 		<tr>
 			<th>Descripci&oacute;n</th>

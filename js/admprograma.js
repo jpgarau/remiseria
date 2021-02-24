@@ -108,8 +108,8 @@ function cargarFila(objeto){
         '<td>'+objeto.padre+'</td>'+
         '<td>'+(objeto.esopcion=="0"?'No':'Si')+'</td>'+
         '<td>'+objeto.orden+'</td>'+
-        '<td>'+'<button class="btn btn-dark btn_editar" title="Modificar Progrma" data-toggle="modal"><i class="fas fa-edit"></i></button>'+'</td>'+
-        '<td>'+'<button class="btn btn-danger btn_borrar" title="Eliminar Progrma"><i class="fas fa-trash-alt"></i></button>'+'</td>'+
+        '<td>'+'<button class="btn btn-sm btn-dark btn_editar" title="Modificar Progrma" data-toggle="modal"><i class="fas fa-edit"></i></button>'+'</td>'+
+        '<td>'+'<button class="btn btn-sm btn-danger btn_borrar" title="Eliminar Progrma"><i class="fas fa-trash-alt"></i></button>'+'</td>'+
         '<input type="hidden" value="'+objeto.programaid+'">'+
         '</tr>');
 }

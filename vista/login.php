@@ -25,22 +25,22 @@ require_once('header.php');
         <header style="background-color: rgba(0,0,0,0.5)">
             <h1 class="text-warning" style="font-family: 'Russo One', sans-serif;">Sistema de Remises</h1>
         </header>
-        <main class="container">
+        <main class="container h-75 d-flex justify-content-center align-items-start mt-5">
             <form method="POST" id="login">
                 <fieldset class="form-login">
-                    <h3 class="text-dark">Ingreso</h3>
-                    <div class="center-block">
-                        <label for="usuario" class="text-dark">Usuario</label>
-                        <input type="text" name="usuario" class="form-control" id="usuario" required title="Ingrese el nombre de Usuario.">
+                    <!-- <h3 class="text-dark">Ingreso</h3> -->
+                    <div class="center-block mt-3">
+                        <!-- <label for="usuario" class="text-dark">Usuario</label> -->
+                        <input type="text" name="usuario" class="form-control text-center" placeholder="Usuario" id="usuario" required title="Ingrese el nombre de Usuario.">
                     </div>
 
-                    <div class="center-block">
-                        <label for="password" class="text-dark">Password</label>
-                        <input type="password" name="password" class="form-control" id="password" required title="Ingrese la contraseña.">
+                    <div class="center-block mt-3">
+                        <!-- <label for="password" class="text-dark">Password</label> -->
+                        <input type="password" name="password" class="form-control text-center" id="password" placeholder="Contraseña" required title="Ingrese la contraseña.">
                     </div>
-                    <div class="center-block">
+                    <div class="center-block w-75 mt-3 mx-auto">
                         <div>
-                            <button class="btn btn-primary btn-lg mt-2" type="submit" id="btnlogin" name="btnlogin">Ingresar</button>
+                            <button class="btn btn-success mt-2 btn-block" type="submit" id="btnlogin" name="btnlogin">Ingresar</button>
                         </div>
                     </div>
                 </fieldset>

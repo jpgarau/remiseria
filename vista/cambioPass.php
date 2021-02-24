@@ -31,22 +31,22 @@ require_once('header.php');
         <header style="background-color: rgba(0,0,0,0.5)">
             <h1 class="text-warning" style="font-family: 'Russo One', sans-serif;">Sistema de Remises</h1>
         </header>
-        <main class="container">
+        <main class="container h-75 d-flex justify-content-center align-items-start mt-5">
             <form method="POST" id="login">
                 <fieldset class="form-login">
-                    <h3 class="text-dark">Cambio de Contraseña</h3>
-                    <div class="center-block">
-                        <label for="clave" class="text-dark">Nueva Contraseña</label>
-                        <input type="password" name="clave" class="form-control" id="clave" required title="Ingrese la nueva contraseña.">
+                    <h2 class="text-dark">Cambio de Contraseña</h2>
+                    <div class="center-block mt-3">
+                        <!-- <label for="clave" class="text-dark">Nueva Contraseña</label> -->
+                        <input type="password" name="clave" class="form-control text-center" placeholder="Nueva Contraseña" id="clave" required title="Ingrese la nueva contraseña.">
                     </div>
 
-                    <div class="center-block">
-                        <label for="password" class="text-dark">Password</label>
-                        <input type="password" name="password" class="form-control" id="password" required title="Reingrese la contraseña.">
+                    <div class="center-block mt-3">
+                        <!-- <label for="password" class="text-dark">Password</label> -->
+                        <input type="password" name="password" class="form-control text-center" placeholder="Reingrese Contraseña" id="password" required title="Reingrese la contraseña.">
                     </div>
-                    <div class="center-block">
+                    <div class="center-block w-75 mt-3 mx-auto">
                         <div>
-                            <button class="btn btn-primary btn-lg mt-2" type="submit" id="btnCambiarPass" name="btnCambiarPass">Cambiar</button>
+                            <button class="btn btn-primary btn-block mt-2" type="submit" id="btnCambiarPass" name="btnCambiarPass">Cambiar</button>
                         </div>
                     </div>
                 </fieldset>

@@ -4,7 +4,7 @@
     if(isset($_POST['cerrars'])){
         session_destroy();
         unset($_SESSION);
-        header('Location: /remiseria');
+        header('Location: '.SERVERURL);
     }
     if(!isset($_SESSION['usuario'])){
         include_once($dir.'vista/login.php');

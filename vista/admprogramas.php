@@ -62,7 +62,7 @@ if($_SESSION['userProfile']['perfilid']===1){
 
 <input type="text" name="buscador" id="buscador" class="buscador" placeholder="Buscar">
 
-<table id="tabla_programa" class="table table-hover mx-2">
+<table id="tabla_programa" class="table table-hover table-sm mx-2">
     <thead>
         <tr>
             <th>Nombre</th>
