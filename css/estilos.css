@@ -81,10 +81,11 @@ a.btn-menu:hover{
     background-repeat: no-repeat; 
     background-size: cover;
 }
-nav.navbar{
-    /* padding-top: 0.2rem;
-    padding-bottom: 0.2rem; */
-    height: 49px;
+nav.navbar img{
+    /* height: 30px; */
+}
+a.navbar-brand{
+    padding: 0;
 }
 .navbar-dark .navbar-nav .nav-link.active{
     color: #ffc107;

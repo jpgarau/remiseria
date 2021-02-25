@@ -1,11 +1,15 @@
+var url = '/';
 $(document).ready(function () {
+	setearUrl();
 	if (typeof relojConsola !== "undefined") {
 		clearInterval(relojConsola);
 	}
 
 	$("#seguridad").click(function (e) {
 		e.preventDefault();
-		document.body.style.backgroundColor = "white"
+		document.body.style.backgroundColor = "white";
+		$("button.navbar-toogler").addClass('collapsed');
+		$("#navbarGestion").removeClass('show');
 		if (typeof relojConsola !== "undefined") {
 			clearInterval(relojConsola);
 		}
@@ -18,7 +22,9 @@ $(document).ready(function () {
 	
 	$("#config").on('click', function(e){
 		e.preventDefault();
-		document.body.style.backgroundColor = "white"
+		document.body.style.backgroundColor = "white";
+		$("button.navbar-toogler").addClass('collapsed');
+		$("#navbarGestion").removeClass('show');
 		if (typeof relojConsola !== "undefined") {
 			clearInterval(relojConsola);
 		}
@@ -31,7 +37,9 @@ $(document).ready(function () {
 	
 	$("#cambioPass").click(function (e) {
 		e.preventDefault();
-		document.body.style.backgroundColor = "white"
+		document.body.style.backgroundColor = "white";
+		$("button.navbar-toogler").addClass('collapsed');
+		$("#navbarGestion").removeClass('show');
 		if (typeof relojConsola !== "undefined") {
 			clearInterval(relojConsola);
 		}
@@ -43,7 +51,9 @@ $(document).ready(function () {
 	});
 	$("ul#menu-principal").on("click", "a.opcion", function (e) {
 		e.preventDefault();
-		document.body.style.backgroundColor = "white"
+		document.body.style.background = "white"
+		$("button.navbar-toogler").addClass('collapsed');
+		$("#navbarGestion").removeClass('show');
 		$("#contenedor").removeClass("menu-principal");
 		if(!(e.target.id==='consola' && window.innerWidth<1100))
 		{
@@ -54,7 +64,7 @@ $(document).ready(function () {
 				(res, status, xhr) => {
 					if (status === "error") {
 						function redirigir() {
-							window.location.replace("http://localhost/remiseria");
+							window.location.replace(url);
 						}
 						$("#contenedor2").html(
 							"<div class='container'><div class='alert alert-danger m-4'><strong>Error</strong> en las credenciales. Redirigiendo...<div class='spinner-border spinner-border-sm float-right' role='status' aria-hidden='true'></div></div></div>"
@@ -86,7 +96,7 @@ function SolicitarCambioClave() {
 					"Cambio de clave solicitado con exito. Redirigiendo..."
 				);
 				setTimeout(() => {
-					window.location.replace("http://localhost/remiseria");
+					window.location.replace(url);
 				}, 3000);
 			} else {
 				console.error(response.msg);
@@ -95,5 +105,19 @@ function SolicitarCambioClave() {
 		error: function (response) {
 			console.error(response);
 		},
+	});
+}
+
+function setearUrl(){
+	$.ajax({
+		type: "POST",
+		url: "scripts/apiparametros.php",
+		data: { param: 'url'},
+		dataType: "json",
+		success: function (response){
+			if(response.exito){
+				url = response.url;
+			}
+		}
 	});
 }

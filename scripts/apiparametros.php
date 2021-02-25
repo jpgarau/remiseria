@@ -29,6 +29,9 @@ switch ($tarea) {
     case 'alarma':
         $retorno = array('exito' => 'true', 'alarma' => ALARMA);
         break;
+    case 'url':
+        $retorno = array('exito' => 'true', 'url' => SERVERURL);
+        break;
     default:
         $retorno = array('exito' => false);
         break;

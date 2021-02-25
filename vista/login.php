@@ -10,7 +10,7 @@ if (isset($_POST['btnlogin'])) {
         if ($respuesta["encontrado"]) {
             $_SESSION['usuario'] = $respuesta[0]['apellido'] . ', ' . $respuesta[0]['nombre'];
             $_SESSION['userProfile'] = $respuesta[0];
-            header('Location: /remiseria');
+            header('Location: '.SERVERURL);
         } else {
             echo "<div class='alert alert-danger mb-0'>Usuario o Contraseña Incorrectos</div>";
         }

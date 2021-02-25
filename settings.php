@@ -12,7 +12,7 @@ if(!PRODUCCION) {
 
 const CUIT = "";
 const SERVERURL = 'http://localhost/remiseria/';
-const EMPRESA = 'Remiseria';
+const EMPRESA = 'Remiseria Agontech';
 const ALARMA = 15;
 const TOKEN = '';
 const OPERADORA = 0;

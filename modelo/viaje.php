@@ -187,7 +187,6 @@ class Viaje
             $idViaje = $this->getIdViaje();
             $sql = 'SELECT * FROM viajes WHERE idViaje=?';
             $mysqli = Conexion::abrir();
-            $mysqli->set_charset('utf8');
             $stmt = $mysqli->prepare($sql);
             if($stmt!==FALSE){
                 $stmt->bind_param('i',$idViaje);
@@ -219,7 +218,6 @@ class Viaje
             $estado = 1;
             $sql = "INSERT INTO viajes(fecha, hora, idCliente, origen, destino, observa, idServicio, horaLibre, importe, estado) VALUES(?,?,?,?,?,?,?,?,?,?)";
             $mysqli = Conexion::abrir();
-            $mysqli->set_charset('utf8');
             $stmt = $mysqli->prepare($sql);
             if($stmt!==FALSE){
                 $stmt->bind_param('ssisssisdi', $fecha, $hora, $idCliente, $origen, $destino, $observa, $idServicio, $horaLibre, $importe, $estado);
@@ -268,7 +266,6 @@ class Viaje
             $importe = $this->getImporte();
             $sql = 'UPDATE viajes SET fecha=?, hora=?, idCliente=?, origen=?, destino=?, observa=?, horaLibre=?, importe=? WHERE idViaje=?';
             $mysqli = Conexion::abrir();
-            $mysqli->set_charset('utf8');
             $stmt = $mysqli->prepare($sql);
             if($stmt!==FALSE){
                 $stmt->bind_param('ssissssdi',$fecha, $hora, $idCliente, $origen, $destino, $observa, $horaLibre, $importe, $idViaje);
@@ -330,7 +327,6 @@ class Viaje
             $estado = 1;
             $sql = "INSERT INTO viajes(fecha, hora, idCliente, origen, destino, observa, idReserva, idServicio, estado) VALUES (?,?,?,?,?,?,?,?,?)";
             $mysqli = Conexion::abrir();
-            $mysqli->set_charset('utf8');
             $stmt = $mysqli->prepare($sql);
             if($stmt!==FALSE){
                 $stmt->bind_param('ssisssiii',$fecha, $hora, $idCliente, $origen, $destino, $observa, $idReserva, $idServicio, $estado);
@@ -361,7 +357,6 @@ class Viaje
             $estado = 3;
             $sql = 'UPDATE viajes SET estado=? WHERE idViaje=?';
             $mysqli = Conexion::abrir();
-            $mysqli->set_charset('utf8');
             $stmt = $mysqli->prepare($sql);
             if($stmt!==FALSE){
                 $stmt->bind_param('ii', $estado, $idViaje);
@@ -399,7 +394,6 @@ class Viaje
             $idServicio = $this->getIdServicio();
             $sql = "SELECT * FROM viajes WHERE idServicio = ? AND estado=1 ORDER BY fecha,hora";
             $mysqli = Conexion::abrir();
-            $mysqli->set_charset('utf8');
             $stmt  =$mysqli->prepare($sql);
             if($stmt!==FALSE){
                 $stmt->bind_param('i',$idServicio);
@@ -430,7 +424,6 @@ class Viaje
             $sql .= $idChofer>0?" AND idChofer={$idChofer}":"";
             $sql .= " ORDER BY fecha, hora";
             $mysqli = Conexion::abrir();
-            $mysqli->set_charset('utf8');
             $stmt = $mysqli->prepare($sql);
             if($stmt!==FALSE){
                 $stmt->bind_param('ssi',$fecha, $fechaHasta,$idVehiculos);
@@ -452,7 +445,6 @@ class Viaje
         try {
             $sql = 'SELECT viajes.idViaje, viajes.origen FROM viajes LEFT JOIN servicio on viajes.idServicio=servicio.idServicio WHERE servicio.idChofer=? AND viajes.importe IS NULL AND viajes.estado=1 AND servicio.estado=1 AND viajes.idViaje = (SELECT MAX(idViaje) FROM viajes WHERE viajes.estado=1)';
             $mysqli = Conexion::abrir();
-            $mysqli->set_charset('utf8');
             $stmt = $mysqli->prepare($sql);
             if($stmt!==FALSE){
                 $stmt->bind_param('i',$idChofer);

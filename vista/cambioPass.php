@@ -13,7 +13,7 @@ if (isset($_POST['btnCambiarPass'])) {
                 unset($_SESSION['usuario']);
                 unset($_SESSION['userProfile']);
                 echo "<div class='alert alert-success mb-0'>Cambio realizado con exito. Redirigiendo<i class='fas fa-circle-notch fa-spin'></i></div>";
-                header('Location: /remiseria');
+                header('Location: '.SERVERURL);
             } else {
                 echo "<div class='alert alert-danger mb-0'>Error al conectarse con la base de datos. " . $respuesta['msg'] . "</div>";
             }
