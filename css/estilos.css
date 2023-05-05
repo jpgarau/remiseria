@@ -81,9 +81,7 @@ a.btn-menu:hover{
     background-repeat: no-repeat; 
     background-size: cover;
 }
-nav.navbar img{
-    /* height: 30px; */
-}
+
 a.navbar-brand{
     padding: 0;
 }
@@ -148,7 +146,9 @@ a.navbar-brand{
     padding-top: 0;
     padding-bottom: 0;
 }
-
+#consola{
+    max-height: 99%;
+}
 div#reservas .table-responsive{
     min-height: 35vh;
     max-height: 35vh;
@@ -158,7 +158,7 @@ div#choferes_viajes .table-responsive{
     max-height: 38vh;
 }
 
-#tabla-viajes thead tr th, #tabla_reservas thead tr th, #tabla_ctacte thead tr th { 
+#tabla_viajes thead tr th, #tabla_reservas thead tr th, #tabla_ctacte thead tr th { 
     position: sticky;
     top: 0;
     z-index: 10;

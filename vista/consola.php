@@ -41,7 +41,7 @@ if(isset($_SESSION['usuario'])){
 <div class="d-flex justify-content-center">
     <p id="downNav" class="text-center m-0 bg-dark px-5 text-white rounded-bottom"><i class="fas fa-chevron-down"></i></p>
 </div>
-<div id="consola" style="height: 93vh;">
+<div id="consola">
     <div class="row m-0 p-0 h-50 overflow-hidden">
         <div id="calendar" class="col-3">
             <div id="calendario"></div>

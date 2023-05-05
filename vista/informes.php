@@ -6,7 +6,7 @@ if(isset($_SESSION['usuario'])){
 <div class="container">
     <h3 class="text-center"><i>Informes</i></h3>
     <div class="">
-        <button class="btn btn-info" id="informeViaje">Informe de Viajes Realizados</button>
+        <button class="btn btn-dark" id="informeViaje">Informe de Viajes Realizados</button>
     </div>
 
     <!-- Modal -->
