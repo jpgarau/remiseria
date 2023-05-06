@@ -52,11 +52,11 @@ class Telegram{
                         }
                     }
                     if(count($arrNuevos)>0){
+                        $contador = 0;
                         foreach ($arrNuevos as $nuevoTUser) {
                             $chatid = $nuevoTUser['id'];
                             $last_name = $nuevoTUser['last_name'];
                             $first_name = $nuevoTUser['first_name'];
-                            $contador = 0;
                             if(!in_array($chatid, array_column($existentes, 'telid'))){
                                 if($contador > 0){
                                     $sql .= ',';
